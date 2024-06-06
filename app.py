@@ -4,10 +4,6 @@ from libs.data_processing import load_model, data_processing, post_processing
 from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
-from pathlib import Path
-
-
-BASE_DIR = Path(__file__).resolve(strict=True).parent
 
 class RequestJSON(BaseModel):
     gender: str

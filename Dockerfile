@@ -10,9 +10,7 @@ RUN apt-get -y update && apt-get install -y \
 
 RUN pip3 install --upgrade setuptools
 RUN pip3 install \
-    cython==3.0.6 \
-    numpy==1.26.0 \
-    pandas==2.1.3
+    cython==3.0.6
 
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
