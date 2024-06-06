@@ -7,6 +7,8 @@ from fastapi import FastAPI
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from pathlib import Path
+from autogluon.tabular import TabularPredictor
+from sklearn.linear_model import LinearRegression
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
@@ -56,20 +58,15 @@ def predict(request: RequestJSON):
 
     prediction = model.predict(df_processed)
 
-    print(prediction)
-
     result = pd.DataFrame(prediction, columns=["math_score"])
 
-    print(result)
 
     result = pd.concat([result, scaled_df.drop(columns=['math_score'])], axis=1) 
 
-    print(result)
 
     final_result = numeric_transformer.inverse_transform(result)
 
     return jsonable_encoder({'result': final_result[0][0]})
-
 
 
 if __name__ == "__main__":

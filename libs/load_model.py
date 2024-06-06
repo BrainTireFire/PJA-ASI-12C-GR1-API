@@ -7,7 +7,7 @@ def load_model():
     predictor_path = os.path.join(models_path, "predictor.pkl")
     raw_path = os.path.join(models_path, "model.pkl")
     if os.path.isfile(predictor_path):
-        champion_predictor = TabularPredictor.load("data/06_models/champion")
+        champion_predictor = TabularPredictor.load("ml_models/champion")
         return champion_predictor
     elif os.path.isfile(raw_path):
         with open(raw_path, 'rb') as file:
